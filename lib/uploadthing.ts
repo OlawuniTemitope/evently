@@ -3,7 +3,7 @@ import {
     generateUploadDropzone,
   } from "@uploadthing/react";
    
-  import type { OurFileRouter } from "@/app/(auth)/api/uploadthing/core";
+  import type { OurFileRouter } from "@/app/api/uploadthing/core";
 import { generateReactHelpers } from "@uploadthing/react/hooks";
    
   export const {useUploadThing, uploadFiles} = 
