@@ -3,7 +3,8 @@ import { getUserAuth } from "@/lib/actions/user.actions";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-const CreateEvent = async () => { const { userId:userAuth } = auth();
+const CreateEvent = async () => { 
+  const { userId:userAuth } = auth();
 
 if (!userAuth) redirect("/sign-in");
 
