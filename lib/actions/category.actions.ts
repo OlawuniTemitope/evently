@@ -2,8 +2,8 @@
 
 import { handleError } from "../utils"
 import Category from "../database/models/category.model"
-import { CreateCategoryParams } from "@/app/types"
 import { connectToDatabase } from "../database/mongoose"
+import { CreateCategoryParams } from "@/app/types"
 
 export const createCategory = async ({ categoryName }: CreateCategoryParams) => {
   try {
