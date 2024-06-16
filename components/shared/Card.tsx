@@ -16,11 +16,13 @@ type CardProps = {
 }
 
 const Card = async ({ event, hasOrderLink, hidePrice }: CardProps) => {
-  const { userId } = auth();
+  const { userId:userAuth } = auth();
 
-  if (!userId) redirect("/sign-in");
+  if (!userAuth) redirect("/sign-in");
 
-  const user = await getUserAuth(userId);
+  const user = await getUserAuth(userAuth);
+
+  const userId = user._id
   const isEventCreator = userId === event.organizer._id.toString();
 
   return (

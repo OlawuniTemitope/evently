@@ -1,15 +1,9 @@
 import { SearchParamProps } from '@/app/types'
 import Collection from '@/components/shared/Collection'
 import { Button } from '@/components/ui/button'
-<<<<<<< HEAD
 import { getEventsByUser } from '@/lib/actions/event.actions'
 import { getOrdersByUser } from '@/lib/actions/order.actions'
 import { getUserAuth } from '@/lib/actions/user.actions'
-=======
-import { getSelf } from '@/constants/auth.action'
-import { getEventsByUser } from '@/lib/actions/event.actions'
-import { getOrdersByUser } from '@/lib/actions/order.actions'
->>>>>>> d01ba6ad1a20d670f13931efc3c3156a71b3f8cc
 import { IOrder } from '@/lib/database/models/order.model'
 import { auth } from '@clerk/nextjs'
 import Link from 'next/link'
@@ -17,11 +11,14 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
-  const { userId } = auth();
+  const { userId:userAuth } = auth();
 
-  if (!userId) redirect("/sign-in");
+  if (!userAuth) redirect("/sign-in");
 
-  const user = await getUserAuth(userId);
+  const user = await getUserAuth(userAuth);
+
+  const userId = user._id
+
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventsPage) || 1;
 
