@@ -10,7 +10,7 @@ if (!userAuth) redirect("/sign-in");
 
 const user = await getUserAuth(userAuth);
 
-const userId = user._id
+const userId = user._id;
 
 
   return (
